@@ -18,6 +18,7 @@ A smart AI-powered chatbot built with Python, Flask, and TensorFlow that provide
 ├── app.py                  # Flask application main file
 ├── assets/                 # Images and other static assets
 ├── chatbot_model.py        # Neural network model definition
+├── pyrightconfig.json      # silence all import warnings across entire workspace
 ├── intents.json            # Training data with intents and responses
 ├── model/                  # Trained model files
 │   ├── chatbot_model.h5    # Keras model
@@ -30,6 +31,16 @@ A smart AI-powered chatbot built with Python, Flask, and TensorFlow that provide
 │   templates/              # HTML templates
 │   └── index.html          # Chat UI
 └── README.md               # Project documentation
+```
+
+## Prerequisites 🧰
+- Python 3.8+  
+- pip packages:
+  - flask, tensorflow (or tensorflow-cpu), nltk, fuzzywuzzy, python-Levenshtein, numpy
+
+Install:
+```bash
+pip install flask tensorflow nltk fuzzywuzzy python-Levenshtein numpy
 ```
 
 ## 🚀 Installation
@@ -111,6 +122,20 @@ To customize the chatbot for your needs:
 1. Modify the `intents.json` file to include your own intents and responses
 2. Run `chatbot_model.py` to retrain the model with your data
 3. Adjust the UI in `templates/index.html` and `static/style.css` as needed
+
+## Intents & Safety ⚖️
+- Keep Codec-only topics in `intents.json`. Use `random_questions` or `fallback` tags for off-topic patterns.  
+- Add `inappropriate` / `insult` intents (already present) for quick detection and responses.  
+- Retrain model after editing `intents.json`.
+
+## Troubleshooting 🛠️
+- Bot answering wrong tag? Check `model/classes.pkl` order matches `intents.json` tags — retrain if mismatched.  
+- Overly aggressive filters? Adjust `is_inappropriate()` and keyword lists in `app.py`.  
+- No response for new intents? Re-run `chatbot_model.py` and restart `app.py`.
+
+## Quick tips ✅
+- Add polite responses for insults/off-topic in `intents.json` rather than relying only on code-level filters.  
+- Log rejected queries (`rejected_queries.log`) for tuning deny lists.  
 
 ## 💻 Technologies Used
 

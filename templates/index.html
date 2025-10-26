@@ -22,9 +22,14 @@
             </div>
             </main>
 
-        <form class="chat-input-form" id="chat-form">
-            <input type="text" id="user-input" placeholder="Ask a question about code, tech, or Codec..." required>
-            <button type="submit">Send</button>
+        <form id="chat-form" class="chat-input-form">
+            <input id="user-input" name="message" type="text" placeholder="Type a message..." autocomplete="off" />
+            <button id="sendButton" type="submit" class="send-btn" aria-label="Send message">
+                <span class="send-text">Send</span>
+                <svg viewBox="0 0 24 24" class="send-icon" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false">
+                    <path d="M2 21l21-9L2 3v7l15 2-15 2v7z"></path>
+                </svg>
+            </button>
         </form>
     </div>
 

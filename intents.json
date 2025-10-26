@@ -2,20 +2,45 @@
   "intents": [
     {
       "tag": "greeting",
-      "patterns": ["hello", "hi", "hey", "good morning", "good evening"],
-      "responses": ["Hello! Welcome to Codec Technologies 👋 How can I assist you today?"]
+      "patterns": [
+        "hello", "hi", "hey", "good morning", "good evening",
+        "hola", "yo", "hey there"
+      ],
+      "responses": [
+        "Hello! 👋 Welcome to Codec Technologies. How can I assist you today?",
+        "Hey there! 😊 Ready to explore Codec Technologies?"
+      ]
     },
     {
       "tag": "about",
-      "patterns": ["what is codec technologies", "tell me about codec", "what do you do", "who are you"],
+      "patterns": [
+        "what is codec technologies",
+        "tell me about codec",
+        "what do you do",
+        "describe codec technologies"
+      ],
       "responses": [
-        "Codec Technologies is a leading tech-driven company providing Web, Cloud, and AI solutions. We also train students through internships and real-world projects.",
-        "We’re a technology firm focusing on Web Development, Cloud Computing, Artificial Intelligence, and Student Project Development."
+        "Codec Technologies is a tech-driven company providing Web, Cloud, and AI solutions, while training students through internships and real-world projects.",
+        "We’re a leading technology firm focusing on Web Development, Cloud Computing, Artificial Intelligence, and student project development."
+      ]
+    },
+    {
+      "tag": "founder",
+      "patterns": [
+        "what is your name",
+        "who are you",
+        "what's your name",
+        "can i know your name",
+        "whats your name"
+      ],
+      "responses": [
+        "I am CodecBot, your virtual assistant for Codec Technologies! How can I help you today?",
+        "I'm CodecBot, here to assist you with all things related to Codec Technologies."
       ]
     },
     {
       "tag": "mission",
-      "patterns": ["what is your mission", "company goal", "your aim", "vision of codec technologies"],
+      "patterns": ["what is your mission", "company goal", "vision of codec technologies", "your aim"],
       "responses": [
         "Our mission is to empower students and professionals with modern digital skills while delivering innovative solutions for businesses.",
         "Codec Technologies aims to bridge the gap between learning and implementation through real-world projects and mentorship."
@@ -23,7 +48,14 @@
     },
     {
       "tag": "services",
-      "patterns": ["what services do you provide", "your products", "solutions", "what do you offer"],
+      "patterns": [
+        "what services do you provide",
+        "tell me about services you provide",
+        "your products",
+        "solutions",
+        "what do you offer",
+        "what are your services"
+      ],
       "responses": [
         "We offer services in Web Development, AI Chatbot Development, Cloud Deployment, API Integration, and Automation.",
         "Codec Technologies provides project assistance, internship programs, and software development services for businesses and students."
@@ -31,63 +63,88 @@
     },
     {
       "tag": "internship",
-      "patterns": ["internship", "training", "apply for internship", "any internship available", "how to join internship"],
+      "patterns": [
+        "internship",
+        "training",
+        "apply for internship",
+        "any internship available",
+        "how to join internship",
+        "is internship available"
+      ],
       "responses": [
-        "Yes! Codec Technologies offers AICTE-approved internships in Web Development, Python, AI/ML, Cloud, and Cybersecurity. You can apply on our official website or contact our team for registration.",
+        "Yes! Codec Technologies offers AICTE-approved internships in Web Development, Python, AI/ML, Cloud, and Cybersecurity. You can apply on our official website or contact our team.",
         "Our internship program includes real project work, mentorship, certification, and exposure to modern tools and technologies."
       ]
     },
     {
       "tag": "internship_process",
-      "patterns": ["how can I apply for internship", "how to register for internship", "steps to join training"],
+      "patterns": [
+        "how can I apply for internship",
+        "how to register for internship",
+        "steps to join training",
+        "how to enroll",
+        "what is the process to join"
+      ],
       "responses": [
         "To apply for an internship, visit our official website or contact us directly. Fill in your details, select your preferred domain, and our team will reach out for confirmation.",
-        "You can join by registering online or through your college’s training coordinator. Once enrolled, you’ll receive project materials, mentor access, and certification after completion."
+        "You can register online or through your college coordinator. Once enrolled, you'll receive mentor access, project materials, and certification upon completion."
       ]
     },
     {
       "tag": "technologies_used",
-      "patterns": ["technologies used", "what tools do you use", "programming languages you use"],
+      "patterns": [
+        "technologies used",
+        "what tools do you use",
+        "programming languages you use",
+        "what tech stack do you use"
+      ],
       "responses": [
-        "We work with modern technologies such as Python, Java, React JS, Node.js, Express, Tailwind CSS, MySQL, and Cloud platforms like AWS and Google Cloud.",
-        "Codec Technologies uses a mix of cutting-edge tools like Flask, TensorFlow, Supabase, and Firebase to build smart, scalable applications."
+        "We work with Python, Java, React JS, Node.js, Express, Tailwind CSS, MySQL, and Cloud platforms like AWS and Google Cloud.",
+        "Codec Technologies uses modern tools like Flask, TensorFlow, Supabase, and Firebase to build smart, scalable applications."
       ]
     },
     {
       "tag": "projects",
-      "patterns": ["final year projects", "btech projects", "student projects", "project support"],
+      "patterns": ["final year projects", "btech projects", "student projects", "project support", "project guidance"],
       "responses": [
-        "We assist students with end-to-end project development — from idea creation to deployment. Domains include AI, Web, IoT, Cloud, and Data Science.",
-        "Codec Technologies provides project guidance, reports, code explanations, and deployment support for academic and corporate needs."
+        "We assist students with end-to-end project development — from idea creation to deployment in domains like AI, Web, IoT, Cloud, and Data Science.",
+        "Codec Technologies provides complete project guidance, reports, and deployment support for academic and corporate needs."
       ]
     },
     {
       "tag": "team",
-      "patterns": ["your team", "who are in your team", "team members", "founder of codec technologies"],
+      "patterns": ["your team", "team members", "who are in your team", "founder of codec technologies"],
       "responses": [
-        "Our team consists of experienced developers, AI engineers, and mentors passionate about innovation and student growth.",
-        "Codec Technologies was founded by tech enthusiasts with expertise in Web, Cloud, and Artificial Intelligence who aim to make learning more practical."
+        "Our team includes experienced developers, AI engineers, and mentors passionate about innovation and student growth.",
+        "Codec Technologies was founded by tech enthusiasts with expertise in Web, Cloud, and Artificial Intelligence."
       ]
     },
     {
       "tag": "achievements",
-      "patterns": ["achievements of codec technologies", "milestones", "recognitions", "awards"],
+      "patterns": ["achievements", "milestones", "recognitions", "awards", "success story"],
       "responses": [
-        "Codec Technologies has successfully trained thousands of students across India and collaborated with top colleges for project development.",
-        "We have been recognized for innovation in AI-driven solutions and for mentoring students to build real-world projects using modern technologies."
+        "Codec Technologies has trained thousands of students across India and collaborated with top colleges for project development.",
+        "We’ve been recognized for innovation in AI-driven solutions and for mentoring students to build real-world projects."
       ]
     },
     {
-      "tag": "support",
-      "patterns": ["help", "support", "need assistance", "technical help", "how can you help me"],
+      "tag": "help",
+      "patterns": [
+        "help",
+        "please help me",
+        "can you help me",
+        "i need help",
+        "assist me",
+        "can you assist me"
+      ],
       "responses": [
-        "I can help you learn more about Codec Technologies, guide you through internships, projects, or connect you with our support team.",
-        "Sure! I can assist you with details about our programs, services, or technical project guidance."
+        "Of course! 😊 I can help you with Codec Technologies info, services, projects, or internships.",
+        "Sure! Ask me anything about Codec Technologies, and I’ll do my best to assist you."
       ]
     },
     {
       "tag": "contact",
-      "patterns": ["how can I contact you", "email address", "phone number", "contact info"],
+      "patterns": ["how can I contact you", "email", "phone number", "contact info", "how to reach you"],
       "responses": [
         "You can reach us at 📧 support@codectechnologies.in or call 📞 +91 9876543210.",
         "Feel free to email us at support@codectechnologies.in or visit our website for more information."
@@ -95,7 +152,7 @@
     },
     {
       "tag": "location",
-      "patterns": ["where is codec technologies located", "your location", "office address"],
+      "patterns": ["where are you located", "office address", "your location", "where is codec"],
       "responses": [
         "Codec Technologies operates primarily online, collaborating with institutions and professionals across India.",
         "Our headquarters are based in India, but we work remotely with clients and students from multiple regions."
@@ -103,30 +160,38 @@
     },
     {
       "tag": "thanks",
-      "patterns": ["thank you", "thanks", "great help"],
+      "patterns": ["thank you", "thanks", "great help", "thankyou"],
       "responses": ["You're most welcome! 😊 Always here to help you with Codec-related queries."]
     },
     {
       "tag": "goodbye",
-      "patterns": ["bye", "goodbye", "see you later"],
+      "patterns": ["bye", "goodbye", "see you later", "tata"],
       "responses": ["Goodbye! 👋 Have a great day ahead from Codec Technologies."]
     },
     {
       "tag": "how_are_you",
-      "patterns": ["how are you", "how's it going", "how do you feel", "are you fine"],
+      "patterns": [
+        "how are you",
+        "how are you doing",
+        "how is it going",
+        "how do you do",
+        "are you doing well",
+        "how are things",
+        "how's everything",
+        "how have you been"
+      ],
       "responses": [
-        "I'm just a bot, but I'm doing great! 😄 How about you?",
-        "Feeling awesome and ready to help you with anything about Codec Technologies!",
-        "I'm always doing well when I get to chat with you! 😊"
+        "I'm doing great! How can I help you with Codec Technologies today?",
+        "I'm functioning perfectly! Ready to assist you with any questions about Codec Technologies.",
+        "All systems operational! What would you like to know about Codec?"
       ]
     },
     {
       "tag": "capabilities",
-      "patterns": ["what can you do", "how can you help me", "your abilities", "what are your features", "how are you useful"],
+      "patterns": ["what can you do", "your features", "how are you useful", "your abilities"],
       "responses": [
-        "I can tell you everything about Codec Technologies — from internships, services, and projects to technologies we use. I can also guide you on how to apply or get technical help!",
-        "I can provide information about Codec Technologies, internship processes, available projects, and our tech stack. Just ask me what you need!",
-        "I can assist you with Codec Technologies info, internship registration, project ideas, or even connect you to our support team."
+        "I can tell you everything about Codec Technologies — from internships, services, and projects to technologies we use.",
+        "I can help you with Codec Technologies info, internship registration, project ideas, or connect you to our support team."
       ]
     },
     {
@@ -140,43 +205,82 @@
     {
       "tag": "random_questions",
       "patterns": [
-        "why banana is called banana",
-        "can you dance",
-        "do you eat food",
-        "what is your favorite color",
-        "do you sleep",
-        "tell me a joke",
-        "can you sing",
-        "what is your age",
-        "are you human"
+        "why banana is called banana", "can you dance", "do you eat food", "what is your favorite color",
+        "do you sleep", "tell me a joke", "can you sing", "what is your age", "are you human",
+        "ind vs aus", "who will win the match", "who won the match", "dhoni vs virat", "virat vs dhoni",
+        "rohit vs dhoni", "cricket match", "football match", "who is the best cricketer",
+        "best movie", "highest grossing movie", "box office", "movie cast", "who won the oscar",
+        "celebrity gossip", "celebrity news", "tell me the score", "match score", "game result",
+        "random trivia", "fun facts", "what's trending", "viral video", "meme", "song lyrics"
       ],
       "responses": [
-        "Haha, that’s a funny one! 🍌 I’m not sure about bananas, but I’m pretty good with tech questions!",
-        "That’s an interesting question 😄 But I’m better at answering about Codec Technologies or tech topics!",
-        "I might not know that, but I can surely help you with internships, projects, and AI stuff!",
-        "Haha, you got me there! I’m still learning more about the world beyond code 🤖"
+        "Haha, that’s a funny one! 😄 I’m not sure about that, but I’m great with Codec and tech-related questions!",
+        "That’s outside my domain 😅 but I can surely help you with internships, projects, or Codec services!"
       ]
     },
     {
       "tag": "fallback",
-      "patterns": ["unknown", "irrelevant question", "out of context"],
+      "patterns": ["unknown", "irrelevant", "out of context", "general question"],
       "responses": [
-        "I'm sorry, I can only answer questions related to Codec Technologies. 😊",
-        "That seems off-topic — please ask me something about Codec internships, services, or projects."
+        "I'm not trained to answer that 😅 Try asking me about Codec Technologies, internships, or services!",
+        "That seems off-topic — please ask me something related to Codec Technologies or tech training.",
+        "I’m focused on Codec Technologies. Could you rephrase that in context?"
       ]
     },
     {
-      "tag": "help",
+      "tag": "inappropriate",
       "patterns": [
-        "can you help me",
-        "please help me",
-        "i need help",
-        "can you assist me",
-        "i need assistance"
+        "gay",
+        "sexy",
+        "sex",
+        "fuck",
+        "wtf",
+        "asshole",
+        "bitch",
+        "shit",
+        "nude",
+        "porn",
+        "adult"
       ],
       "responses": [
-        "Of course! I can help you with questions about Codec Technologies, our services, projects, and internships.",
-        "Sure! Ask me anything about Codec Technologies and I’ll do my best to assist you."
+        "I don't respond to inappropriate content. Please keep our conversation professional and focused on Codec Technologies.",
+        "That's inappropriate. I'm here to help with Codec Technologies related queries only. Please be respectful.",
+        "I maintain professional communication only. Let's discuss Codec Technologies, internships, or services instead."
+      ]
+    },
+    {
+      "tag": "insult",
+      "patterns": [
+        "are you fool",
+        "you are fool",
+        "are you a fool",
+        "you are a fool",
+        "you fool",
+        "are you stupid",
+        "you are stupid",
+        "you're stupid",
+        "shut up",
+        "stupid bot",
+        "idiot"
+      ],
+      "responses": [
+        "I don't respond to insults. Please keep our conversation professional — I can help with Codec Technologies, internships, projects, or services.",
+        "Let's keep things respectful. Ask me about Codec Technologies and I'll be glad to assist.",
+        "I maintain professional communication. If you have questions about Codec internships or services, please ask."
+      ]
+    },
+    {
+      "tag": "single_letter",
+      "patterns": [
+        "a","b","c","d","e","f","g","h","i","j","k","l","m",
+        "n","o","p","q","r","s","t","u","v","w","x","y","z",
+        "A","B","C","D","E","F","G","H","I","J","K","L","M",
+        "N","O","P","Q","R","S","T","U","V","W","X","Y","Z",
+        "@","#","$","%","&","*"
+      ],
+      "responses": [
+        "I received a single character. Could you please provide more details so I can help? For example: \"How do I apply for an internship at Codec Technologies?\"",
+        "It looks like you entered a single character. Please type your full question about Codec Technologies (internships, projects, services) and I’ll assist you."
       ]
     }
   ]

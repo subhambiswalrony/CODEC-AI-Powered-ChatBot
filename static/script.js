@@ -24,6 +24,14 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 
     /**
+     * Return formatted timestamp (HH:MM AM/PM).
+     */
+    function formatTimestamp() {
+        const now = new Date();
+        return now.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' });
+    }
+
+    /**
      * Creates and appends a new message bubble to the chat window.
      * @param {string} text - The message content.
      * @param {string} sender - 'user' or 'bot'.
@@ -36,6 +44,12 @@ document.addEventListener('DOMContentLoaded', () => {
         const paragraph = document.createElement('p');
         paragraph.textContent = text;
         messageElement.appendChild(paragraph);
+
+        // Timestamp
+        const timestamp = document.createElement('span');
+        timestamp.classList.add('timestamp');
+        timestamp.textContent = formatTimestamp();
+        messageElement.appendChild(timestamp);
 
         chatWindow.appendChild(messageElement);
         
@@ -81,5 +95,110 @@ document.addEventListener('DOMContentLoaded', () => {
             appendMessage("Sorry, I'm having trouble connecting to my brain right now. Please try again later.", 'bot');
             console.error('Error:', error);
         });
+    }
+
+    function setBotResponse(response, type = "normal") {
+        let botHtml;
+        
+        if (type === "inappropriate") {
+            botHtml = '<p class="botText warning"><span>' + response + '</span></p>';
+        } else {
+            botHtml = '<p class="botText"><span>' + response + '</span></p>';
+        }
+        
+        $("#chatbox").append(botHtml);
+        document.getElementById("chat-bar-bottom").scrollIntoView(true);
+    }
+
+    /*
+      Robustly find the chat input and send button (matches common ids used in many templates).
+      Adjust the id strings below if your index.html uses different ids.
+    */
+    function getInputElement() {
+        return document.getElementById('userInput')
+            || document.getElementById('textInput')
+            || document.querySelector('#chat-bar-bottom input[type="text"]')
+            || document.querySelector('#chat-bar-bottom textarea')
+            || document.querySelector('input[type="text"]');
+    }
+
+    function getSendButton() {
+        return document.getElementById('sendButton')
+            || document.getElementById('send')
+            || document.querySelector('#chat-bar-bottom button')
+            || document.querySelector('button[type="submit"]');
+    }
+
+    function disableInput() {
+        const input = getInputElement();
+        const btn = getSendButton();
+        if (input) {
+            input.disabled = true;
+            input.dataset.origPlaceholder = input.placeholder || '';
+            input.placeholder = 'Waiting for bot response...';
+        }
+        if (btn) btn.disabled = true;
+    }
+
+    function enableInput() {
+        const input = getInputElement();
+        const btn = getSendButton();
+        if (input) {
+            input.disabled = false;
+            input.placeholder = input.dataset.origPlaceholder || '';
+            try { input.focus(); } catch (e) {}
+        }
+        if (btn) btn.disabled = false;
+    }
+
+    // Prevent sending while disabled (handles Enter key)
+    document.addEventListener('keydown', function (e) {
+        const input = getInputElement();
+        if (!input) return;
+        if ((e.key === 'Enter' || e.keyCode === 13) && input.disabled) {
+            e.preventDefault();
+        }
+    }, true);
+
+    // Replace your existing getHardResponse / request-sending logic with this pattern
+    function getHardResponse(userText) {
+        // disable input while request is in-flight
+        disableInput();
+
+        let xhr = new XMLHttpRequest();
+        xhr.open("POST", "/get", true);
+        xhr.setRequestHeader("Content-Type", "application/json");
+
+        xhr.onreadystatechange = function() {
+            if (xhr.readyState === XMLHttpRequest.DONE) {
+                try {
+                    if (xhr.status === 200) {
+                        let response = JSON.parse(xhr.responseText);
+                        // expected response format: { response: "text", status: "success" }
+                        setBotResponse(response.response);
+                    } else if (xhr.status === 401) {
+                        setBotResponse("Authentication failed. Please check API key.", "error");
+                    } else {
+                        setBotResponse("Error: Unable to connect to the server", "error");
+                    }
+                } catch (err) {
+                    setBotResponse("Error: Invalid server response", "error");
+                } finally {
+                    // re-enable input after bot has responded / error handled
+                    enableInput();
+                }
+            }
+        };
+
+        xhr.onerror = function () {
+            setBotResponse("Network error. Please try again.", "error");
+            enableInput();
+        };
+
+        xhr.send(JSON.stringify({
+            message: userText
+            // include api_key here if your frontend sends one
+            // , api_key: "codec_technologies_2023"
+        }));
     }
 });
