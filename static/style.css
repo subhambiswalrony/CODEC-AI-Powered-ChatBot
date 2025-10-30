@@ -37,18 +37,6 @@ body {
     border-bottom: 3px solid #000000;
 }
 
-.header-logo-container {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    margin-bottom: 5px;
-}
-
-.header-logo {
-    height: 40px;
-    margin-right: 10px;
-}
-
 .header-title {
     font-size: 1.4em;
 }
@@ -60,13 +48,31 @@ body {
 
 /* Chat Window (Message Display) */
 .chat-window {
+    position: relative; /* needed for watermark pseudo-element */
     flex-grow: 1; /* Takes up all available space */
     padding: 15px;
     overflow-y: auto; /* Enables scrolling for messages */
     display: flex;
     flex-direction: column;
     gap: 10px;
+    background-color: transparent;
 }
+
+/* Watermark logo (subtle, non-interactive) */
+.chat-window::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background-image: url('/static/assets/logo-removebg-preview.png');
+    background-repeat: no-repeat;
+    background-size: 15% auto;
+    background-position: center 50%;
+    background-attachment: fixed;
+    opacity: 3.08; /* adjust for visibility */
+    pointer-events: none;
+    z-index: 0;
+}
+
 
 /* Typing Indicator */
 .typing-indicator {
@@ -107,12 +113,39 @@ body {
 /* Individual Message Styling */
 .message {
     display: flex;
-    align-items: center;
+    align-items: flex-start;
     gap: 8px;
     max-width: 80%;
     line-height: 1.5;
     padding: 0; /* bubble padding moved to <p> */
+    position: relative; /* ensure messages stack above watermark */
+    z-index: 1;
 }
+
+/* Avatar (image) styles for bot and user */
+.bot-icon,
+.user-icon {
+    width: 34px;
+    height: 34px;
+    min-width: 34px;
+    border-radius: 50%;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+}
+
+.bot-icon img,
+.user-icon img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+}
+
+.bot-icon { background: transparent; }
+.user-icon { background: transparent; }
 
 /* Message bubble (text) */
 .message > p {
@@ -126,15 +159,17 @@ body {
 /* Timestamp (now inline, outside bubble) */
 .message .timestamp {
     font-size: 0.75rem;
-    color: #888;
+    color: #000000;
     opacity: 0.9;
+    margin-left: 4px;
     white-space: nowrap;
+    align-self: flex-end; /* align to bottom of the message row */
+    margin-top: 6px; /* nudge timestamp slightly down */
 }
 
-/* User message: timestamp on the LEFT, bubble on the right */
 .user-message {
     align-self: flex-end;
-    flex-direction: row-reverse; /* render: [timestamp] [bubble] visually */
+    flex-direction: row; /* normal flow: [timestamp] will be positioned via order */
 }
 .user-message > p {
     background-color: #007bff;
@@ -143,6 +178,7 @@ body {
     border-top-left-radius: 18px;
     border-bottom-left-radius: 18px;
     border-bottom-right-radius: 18px;
+    margin-right: 8px;
 }
 
 /* Bot message: bubble on the left, timestamp on the RIGHT */
@@ -157,6 +193,24 @@ body {
     border-top-right-radius: 18px;
     border-bottom-left-radius: 18px;
     border-bottom-right-radius: 18px;
+    margin-left: 8px;
+}
+
+/* Position timestamp to the left for user messages */
+.user-message .timestamp {
+    order: -1;
+    margin-right: 6px;
+    margin-top: 6px; /* ensure ordered user timestamp is also nudged down */
+}
+
+/* Ensure bot icon appears before message bubble */
+.bot-message .bot-icon {
+    order: -1;
+}
+
+/* Ensure user icon comes after the message bubble */
+.user-message .user-icon {
+    order: 2;
 }
 
 /* remove old absolute-position rules that caused timestamp inside bubble */
@@ -167,7 +221,7 @@ body {
     left: auto;
     right: auto;
     transform: none;
-    margin: 0 6px;
+    margin: 6px 6px 0 6px; /* add top margin so timestamps sit lower */
 }
 
 /* Input Form */

@@ -40,10 +40,33 @@ document.addEventListener('DOMContentLoaded', () => {
         const messageElement = document.createElement('div');
         messageElement.classList.add('message');
         messageElement.classList.add(`${sender}-message`);
-        
+
+        // Bot avatar on the left
+        if (sender === 'bot') {
+            const botIcon = document.createElement('div');
+            botIcon.classList.add('bot-icon');
+            const botImg = document.createElement('img');
+            botImg.src = '/static/assets/bot.png';
+            botImg.alt = 'Bot avatar';
+            botIcon.appendChild(botImg);
+            messageElement.appendChild(botIcon);
+        }
+
+        // Message bubble
         const paragraph = document.createElement('p');
         paragraph.textContent = text;
         messageElement.appendChild(paragraph);
+
+        // User avatar on the right
+        if (sender === 'user') {
+            const userIcon = document.createElement('div');
+            userIcon.classList.add('user-icon');
+            const userImg = document.createElement('img');
+            userImg.src = '/static/assets/user.png';
+            userImg.alt = 'User avatar';
+            userIcon.appendChild(userImg);
+            messageElement.appendChild(userIcon);
+        }
 
         // Timestamp
         const timestamp = document.createElement('span');
@@ -52,7 +75,7 @@ document.addEventListener('DOMContentLoaded', () => {
         messageElement.appendChild(timestamp);
 
         chatWindow.appendChild(messageElement);
-        
+
         // Scroll to the latest message
         chatWindow.scrollTop = chatWindow.scrollHeight;
     }
