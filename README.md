@@ -1,6 +1,6 @@
 # 🤖 Codec AI Assistant
 
-![Codec Logo](assets/logo-removebg-preview.png)
+![Codec Logo](static/assets/logo-removebg-preview.png)
 
 A smart AI-powered chatbot built with Python, Flask, and TensorFlow that provides information about Codec Technologies, its services, internships, and more.
 
@@ -25,7 +25,7 @@ A smart AI-powered chatbot built with Python, Flask, and TensorFlow that provide
 │   └── words.pkl           # Vocabulary
 ├── nltk_download_fix.py    # Helper for NLTK resources
 ├── static/                 # CSS and JavaScript files
-│   ├── assets/                 # Images and other static assets
+│   ├── assets/             # Images and other static assets
 │   ├── style.css           # Styling
 │   └── script.js           # Frontend logic
 │   templates/              # HTML templates
