@@ -1,4 +1,4 @@
-# 🤖 Codec AI Assistant
+# 🤖 Codec AI Powered ChatBot
 
 ![Codec Logo](static/assets/logo-removebg-preview.png)
 

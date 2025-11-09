@@ -308,3 +308,12 @@ body {
     border: 1px solid #ffeeba;
     color: #856404;
 }
+
+/* Footer placed below the chatbox - centered and muted */
+.bot-footer {
+    text-align: center;
+    font-size: 0.9rem;
+    color: #6c757d; /* muted gray */
+    margin: 10px 0 16px; /* separate from chatbox */
+    padding: 4px 8px;
+}
